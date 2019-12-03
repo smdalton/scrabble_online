@@ -5,7 +5,6 @@ class ScrabbleBoardTestCase(unittest.TestCase):
 
     def setUp(self):
         self.board = ScrabbleBoard()
-        print('initial setup complete')
 
     def test_reset_bag(self):
         for i in range(10):
