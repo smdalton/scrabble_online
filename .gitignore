@@ -1,0 +1,6 @@
+*.coverage*
+*.html
+*.pipfile.lock
+*.pyc
+/env
+/__pycache__
