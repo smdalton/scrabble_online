@@ -1,28 +1,25 @@
 from flask import Flask
 from flask import jsonify
 from flask import request, make_response
+from flask_restful import Api
 
-import scrabble
+from classes import scrabble_board as scrabble
 
 app = Flask(__name__)
-
+api = Api(app)
 
 board = scrabble.ScrabbleBoard()
-
-
 
 @app.route('/', methods=['GET'])
 def hello_world():
     html = "<head>HomePage</head>"
     return make_response(html,200)
 
-
 @app.route('/is-valid-word', methods=['GET'])
 def is_valid_word():
     word = request.args.get('check-word')
     return jsonify({'check-word': word,
                     'valid': 'true'})
-
 
 
 @app.route('/debug', methods=['GET'])
@@ -32,7 +29,6 @@ def debug():
         'board-dict' : board.letter_dict,
         'current-bag':  board.get_bag()
         })
-
 
 @app.route('/reset-bag', methods=['GET'])
 def reset_bag():
